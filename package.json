@@ -1,8 +1,7 @@
 {
-	"name": "cloudflare-saas-stack",
+	"name": "habilens",
 	"scripts": {
 		"build": "remix vite:build",
-		"cf-typegen": "wrangler types",
 		"deploy": "bun run build && wrangler deploy",
 		"dev:frontend": "remix vite:dev",
 		"dev": "bun run build && wrangler dev",
@@ -12,8 +11,8 @@
 		"typecheck": "tsc",
 		"typegen": "wrangler types",
 		"db:generate": "drizzle-kit generate",
-		"db:push": "wrangler d1 migrations apply cloudflare-saas-stack-db --local",
-		"db:deploy": "wrangler d1 migrations apply cloudflare-saas-stack-db"
+		"db:push": "wrangler d1 migrations apply habilens-db --local",
+		"db:deploy": "wrangler d1 migrations apply habilens-db"
 	},
 	"dependencies": {
 		"@hono/trpc-server": "^0.3.4",

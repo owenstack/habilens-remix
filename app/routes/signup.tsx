@@ -8,6 +8,7 @@ import { signUp } from "~/utils/auth.client";
 import { useState, useTransition } from "react";
 import { Loader } from "lucide-react";
 import { toast } from "sonner";
+import house from "assets/images/house.jpg";
 
 export default function SignUp() {
 	const [pending, startTransition] = useTransition();
@@ -112,7 +113,7 @@ export default function SignUp() {
 			</div>
 			<div className="bg-muted relative hidden lg:block">
 				<img
-					src="/house.jpg"
+					src={house}
 					alt="placeholder"
 					className="absolute inset-o h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
 				/>

@@ -20,25 +20,22 @@ function getLocalD1DB() {
 	}
 }
 
-const config = (env: Env) =>
-	defineConfig({
-		dialect: "sqlite",
-		schema: "./app/db/schema.ts",
-		out: "./migrations",
-		...(process.env.NODE_ENV === "production"
-			? {
-					driver: "d1-http",
-					dbCredentials: {
-						accountId: env.CLOUDFLARE_D1_ACCOUNT_ID,
-						databaseId: env.DATABASE,
-						token: env.CLOUDFLARE_D1_API_TOKEN,
-					},
-				}
-			: {
-					dbCredentials: {
-						url: getLocalD1DB(),
-					},
-				}),
-	});
-
-export default config;
+export default defineConfig({
+	dialect: "sqlite",
+	schema: "./app/db/schema.ts",
+	out: "./migrations",
+	...(process.env.NODE_ENV === "production"
+		? {
+				driver: "d1-http",
+				dbCredentials: {
+					accountId: process.env.CLOUDFLARE_D1_ACCOUNT_ID,
+					databaseId: process.env.DATABASE,
+					token: process.env.CLOUDFLARE_D1_API_TOKEN,
+				},
+			}
+		: {
+				dbCredentials: {
+					url: getLocalD1DB(),
+				},
+			}),
+});
